@@ -37,9 +37,47 @@
         }
 
         .Hero .container {
-            text-align: center;
+            text-align: left;
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+        }
+
+        .hero-content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-left {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            position: relative;
+            animation: floatPhone 3s ease-in-out infinite;
+        }
+
+        @keyframes floatPhone {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .phone-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 700px;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.3));
+            border-radius: 30px;
         }
 
         .cyan-dot {
@@ -349,6 +387,23 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-left {
+                max-width: 100%;
+            }
+
+            .hero-right {
+                width: 100%;
+            }
+
+            .phone-image {
+                max-height: 500px;
+            }
+
             .Hero__text {
                 font-size: 2.5rem;
             }
@@ -398,14 +453,24 @@
         </div>
         
         <div class="container">
-            <div class="cyan-dot"></div>
-            <div class="badge">연봉 25% UP</div>
-            <h1 class="Hero__text">
-                불경력 탈출하고<br>
-                <span class="highlight">연봉 25% 올리는 스탭</span>
-            </h1>
-            <p class="hero-subtitle">체계적이고 전략적인 접근이 필요합니다</p>
-            <a href="#features" class="cta-button">자세히 알아보기</a>
+            <div class="hero-content-wrapper">
+                <div class="hero-left">
+                    <div class="cyan-dot"></div>
+                    <div class="badge">연봉 25% UP</div>
+                    <h1 class="Hero__text">
+                        불경력 탈출하고<br>
+                        <span class="highlight">연봉 25% 올리는 스탭</span>
+                    </h1>
+                    <p class="hero-subtitle">체계적이고 전략적인 접근이 필요합니다</p>
+                    <a href="#features" class="cta-button">자세히 알아보기</a>
+                </div>
+                <div class="hero-right">
+                    <div class="phone-mockup">
+                        <!-- 핸드폰 목업 이미지 -->
+                        <img src="KakaoTalk_20251113_193035120.jpg" alt="토스 앱 화면" class="phone-image">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
