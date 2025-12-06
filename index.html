@@ -1,0 +1,713 @@
+
+안녕하세요 Claude! 리팩토링 계획 수립하기을(를) 해주실 수 있나요? 추가 정보가 필요하시다면 바로 1-2개의 핵심 질문을 해주세요. 더 나은 결과를 위해 제가 업로드해야 할 문서가 있다고 생각하시면 알려주세요. Google Drive나 웹 검색 등 사용 가능한 도구들을 활용하실 수 있습니다 - 이 작업을 더 잘 수행하는 데 도움이 된다면요. 분석 도구는 사용하지 마세요. 답변은 친근하고 간단하며 대화체로 부탁드립니다.
+
+가능한 한 빨리 작업을 수행해 주시고, 적절하다면 결과물을 보여주시면 좋겠습니다. 결과물을 사용하실 경우, 이 특정 작업에 가장 도움이 될 만한 결과물(대화형, 시각적, 체크리스트 등)을 고려해 주세요. 도움 감사합니다!
+
+안녕하세요! 리팩토링 계획을 도와드리겠습니다.
+
+더 정확한 계획을 세우기 위해 몇 가지만 여쭤볼게요:
+
+어떤 코드베이스를 리팩토링하시나요? (프로그래밍 언어, 프로젝트 규모, 현재 직면한 주요 문제점 등)
+리팩토링의 주요 목표가 무엇인가요? (예: 성능 개선, 코드 가독성 향상, 유지보수성 개선, 기술 부채 해결 등)
+혹시 다음 자료들이 있다면 공유해주시면 더욱 맞춤형 계획을 만들 수 있어요:
+
+리팩토링할 코드 파일이나 코드 구조 설명
+현재 겪고 있는 기술적 문제점 목록
+프로젝트 문서나 아키텍처 다이어그램
+답변 주시면 바로 실용적인 리팩토링 계획과 체크리스트를 만들어드릴게요! 😊
+
+나는 fithub 페이지를 활용해서 홈페이지를 만들거야.
+index.html에 코드를 넣을거야. 나중에 이미지를 넣을건데 그 공간도 고려해줘. 
+
+신규 서비스 랜딩 페이지 만들어줘. 디자인 스타일은 미니멀하게 만들어줘.
+상단에는 큰 히어로 배너(images/banner.jpg),중간에는 기능 소개 카드 3개(images/feature1.png, images/feature2.png, images/feature3.png),하단에는 뉴스레터 구독 폼과 푸터가 있어야 해.모던하고 시선을 끄는 스타일로, 하나의 index.html로 출력해.
+
+미니멀 랜딩 페이지
+대화형 아티팩트 
+미니멀하고 모던한 랜딩 페이지를 만들어드렸어요! 🎨
+
+주요 특징:
+
+히어로 배너: 전체 화면 크기의 멋진 배너 (images/banner.jpg)
+기능 소개 카드 3개: 호버 시 살짝 올라가는 인터랙티브 효과
+뉴스레터 구독 폼: 보라색 그라디언트 배경의 눈에 띄는 섹션
+깔끔한 푸터: 링크와 저작권 정보 포함
+이미지 준비: 다음 이미지들을 images 폴더에 넣어주시면 돼요:
+
+banner.jpg - 히어로 배너용 (1920x1080 권장)
+feature1.png, feature2.png, feature3.png - 각 기능 카드용 (800x600 권장)
+반응형 디자인도 적용되어 있어서 모바일에서도 완벽하게 보여요!
+
+텍스트나 색상, 레이아웃 등 수정하고 싶은 부분이 있으시면 말씀해주세요! 😊
+
+
+/* Reset and base styles */ /* CSS Variables */ :root { --electric-border-color: #dd8448; --electric-light-color: oklch(from var(--electric-border-color) l c h); --gradient-color: oklch( from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4 ); --color-neutral-900: oklch(0
+
+pasted
+
+지금 디자인이 너무 밋밋해 코드를 여기에 좀 합쳐줘 
+
+<main class="main-container">
+  <svg class="svg-container">
+    <defs>
+      <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+          <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+          <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+          <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+          <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+        <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+        <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+        <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+        <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B" />
+      </filter>
+    </defs>
+  </svg>
+  <div class="card-container">
+    <div class="inner-container">
+      <div class="border-outer">
+        <div class="main-card"></div>
+      </div>
+      <div class="glow-layer-1"></div>
+      <div class="glow-layer-2"></div>
+    </div>
+    <div class="overlay-1"></div>
+    <div class="overlay-2"></div>
+    <div class="background-glow"></div>
+    <div class="content-container">
+      <div class="content-top">
+        <div class="scrollbar-glass">
+          Dramatic
+        </div>
+        <p class="title">Electric Border</p>
+      </div>
+      <hr class="divider" />
+      <div class="content-bottom">
+        <p class="description">In case you'd like to emphasize something very dramatically.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+더 보기
+제공하신 Electric Border 효과를 랜딩 페이지에 멋지게 통합해드릴게요! 히어로 섹션과 기능 카드에 이 극적인 효과를 적용하겠습니다.
+
+미니멀 랜딩 페이지
+대화형 아티팩트 ∙ 버전 2 
+완성했습니다! 🔥
+
+적용된 Electric Border 효과:
+
+히어로 배너: 메인 배너 이미지가 극적인 글로우 효과와 애니메이션되는 테두리로 감싸져 있어요. 물결치는 듯한 디스플레이스먼트 효과가 계속 움직입니다.
+기능 카드 3개: 각 카드마다 Electric Border 효과가 적용되어 오렌지색 글로우가 빛나고, 호버 시 위로 올라가는 효과도 있어요.
+다크 테마: 전체적으로 어두운 배경에 발광하는 요소들로 프리미엄하고 미래지향적인 느낌을 줍니다.
+배지 추가: 각 기능 카드에 유리 질감의 배지(Premium, Advanced, 24/7)를 추가했어요.
+주요 특징:
+
+애니메이션되는 SVG 필터로 테두리가 살아있는 듯 움직임
+다층 글로우 효과로 깊이감 있는 비주얼
+다크 모드 디자인으로 현대적이고 세련된 느낌
+모든 인터랙티브 요소에 부드러운 전환 효과
+이제 훨씬 더 역동적이고 시선을 사로잡는 랜딩 페이지가 되었어요! 🎨✨
+
+1765000783502_image.png
+이 이미지처럼 내 홈페이지 만들고 싶어
+
+이 이미지의 스타일로 홈페이지를 새롭게 만들어드릴게요! 밝고 깔끔한 디자인에 보라색 포인트 컬러가 특징이네요.
+
+미니멀 랜딩 페이지
+대화형 아티팩트 ∙ 버전 3 
+완성했습니다! 🎉
+
+이미지와 동일하게 구현된 요소들:
+
+✅ 상단 배너: 보라색 "연봉 25% UP" 배지 ✅ 메인 타이틀: "불경력 탈출하고 연봉 25% 올리는 스탭" (보라색 그라디언트 강조) ✅ 청록색 점: 애니메이션으로 떠다니는 효과 ✅ 6개 기능 카드:
+
+커리어컨설팅 탐색 (🔍)
+경험 정리 (📋)
+경력기술서 (📖)
+자기소개서 (👤)
+면접 (💬)
+보너스혜택 (🎁) ✅ 화살표 아이콘: 처음 3개 카드에 보라색 화살표 ✅ 밝은 배경: 연한 보라빛 그라디언트 ✅ 보라색 테마: 메인 컬러로 일관성 있게 적용 ✅ CTA 버튼: 보라색 그라디언트 배경의 신청 섹션
+이미지 파일 없이도 이모지로 아이콘을 구현해서 바로 사용 가능해요! 원하시면 실제 이미지로 교체도 쉽게 할 수 있습니다. 😊
+
+웨이 불경력 탈출 코드를 가지고 
+전체적인 사이트 레이아웃, 스타일은 이렇게 만들고 <section class="Hero">
+  <div class="container">
+    <h1 class="Hero__text heading-xl">Animate Anything</h1>
+    <div class="Hero__images">
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-1.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-2.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-3.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-4.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-5.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-6.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-7.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-8.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-9.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-10.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-11.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-12.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-13.jpg" alt="" />
+      <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-14.jpg" alt="" />
+    </div>
+  </div>
+</section>
+
+더 보기
+불경력 탈출 스타일에 멋진 이미지 애니메이션 효과를 결합해서 만들어드릴게요!
+
+미니멀 랜딩 페이지
+대화형 아티팩트 ∙ 버전 4 
+완성했습니다! 🎨✨
+
+결합된 디자인 특징:
+
+🎯 히어로 섹션
+
+14개의 이미지가 배경에 그리드로 배치되어 순차적으로 페이드인 애니메이션
+이미지들은 반투명하게 처리되어 텍스트가 돋보임
+"불경력 탈출하고 연봉 25% 올리는 스탭" 메인 카피가 중앙에 강조
+보라색 배지와 청록색 떠다니는 점 효과
+💜 보라색 브랜딩
+
+일관된 보라색 그라디언트 적용
+CTA 버튼과 강조 텍스트에 브랜드 컬러 사용
+📦 6개 기능 카드
+
+깔끔한 화이트 카드 디자인
+호버 시 살짝 올라가는 인터랙션
+처음 3개 카드에 화살표 표시
+🎬 애니메이션 효과
+
+이미지들이 순차적으로 등장 (0.1초씩 딜레이)
+스케일과 회전 효과로 역동적인 느낌
+부드러운 페이드인 전환
+원하시는 이미지로 교체하려면 images/ 폴더에 portrait-1.jpg ~ portrait-14.jpg 형식으로 저장하고 URL만 바꿔주시면 됩니다! 😊
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>불경력 탈출하고 연봉 25% 올리는 스탭</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section with Animated Images */
+        .Hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .Hero .container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cyan-dot {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #06b6d4;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            margin-left: -150px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            position: relative;
+            z-index: 3;
+        }
+
+        .Hero__text {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #1f2937;
+            line-height: 1.2;
+            position: relative;
+            z-index: 3;
+        }
+
+        .Hero__text .highlight {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .Hero__images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        .Hero__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            animation: fadeInScale 1.5s ease-out backwards;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .Hero__image:nth-child(1) { animation-delay: 0.1s; }
+        .Hero__image:nth-child(2) { animation-delay: 0.2s; }
+        .Hero__image:nth-child(3) { animation-delay: 0.3s; }
+        .Hero__image:nth-child(4) { animation-delay: 0.4s; }
+        .Hero__image:nth-child(5) { animation-delay: 0.5s; }
+        .Hero__image:nth-child(6) { animation-delay: 0.6s; }
+        .Hero__image:nth-child(7) { animation-delay: 0.7s; }
+        .Hero__image:nth-child(8) { animation-delay: 0.8s; }
+        .Hero__image:nth-child(9) { animation-delay: 0.9s; }
+        .Hero__image:nth-child(10) { animation-delay: 1s; }
+        .Hero__image:nth-child(11) { animation-delay: 1.1s; }
+        .Hero__image:nth-child(12) { animation-delay: 1.2s; }
+        .Hero__image:nth-child(13) { animation-delay: 1.3s; }
+        .Hero__image:nth-child(14) { animation-delay: 1.4s; }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+            position: relative;
+            z-index: 3;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: #1f2937;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid #f3f4f6;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.15);
+            border-color: #a855f7;
+        }
+
+        .feature-icon {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            position: relative;
+        }
+
+        .arrow-icon {
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7c3aed;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 .highlight-text {
+            color: #7c3aed;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .newsletter h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 16px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-size: 1rem;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-input:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-button {
+            padding: 16px 35px;
+            background: white;
+            color: #7c3aed;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 80px;
+            background: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #7c3aed;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .Hero__text {
+                font-size: 2.5rem;
+            }
+
+            .Hero__images {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-button {
+                width: 100%;
+            }
+
+            .cyan-dot {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Animated Images -->
+    <section class="Hero">
+        <div class="Hero__images">
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-1.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-2.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-3.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-4.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-5.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-6.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-7.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-8.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-9.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-10.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-11.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-12.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-13.jpg" alt="" />
+            <img class="Hero__image" src="https://assets.codepen.io/16327/portrait-image-14.jpg" alt="" />
+        </div>
+        
+        <div class="container">
+            <div class="cyan-dot"></div>
+            <div class="badge">연봉 25% UP</div>
+            <h1 class="Hero__text">
+                불경력 탈출하고<br>
+                <span class="highlight">연봉 25% 올리는 스탭</span>
+            </h1>
+            <p class="hero-subtitle">체계적이고 전략적인 접근이 필요합니다</p>
+            <a href="#features" class="cta-button">자세히 알아보기</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">6단계 프로세스</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    🔍
+                    <span class="arrow-icon">▶</span>
+                </div>
+                <h3><span class="highlight-text">커리어</span>컨설팅 <span class="highlight-text">탐색</span></h3>
+                <p>전문가와 함께 당신의 커리어 방향을 설정하고 목표를 명확히 합니다</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    📋
+                    <span class="arrow-icon">▶</span>
+                </div>
+                <h3><span class="highlight-text">경험</span> 정리</h3>
+                <p>이력서와 경력을 효과적으로 정리하여 강점을 부각시킵니다</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    📖
+                    <span class="arrow-icon">▶</span>
+                </div>
+                <h3><span class="highlight-text">경력</span>기술서</h3>
+                <p>채용 담당자의 눈길을 사로잡는 매력적인 기술서를 작성합니다</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <h3>자기소개서</h3>
+                <p>당신만의 스토리를 담은 차별화된 자기소개서를 완성합니다</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>면접</h3>
+                <p>실전 면접 시뮬레이션으로 자신감 있게 면접에 임할 수 있습니다</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>보너스혜택</h3>
+                <p>성공적인 이직 후에도 지속적인 커리어 성장을 지원합니다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>지금 바로 시작하세요</h2>
+        <p>무료 커리어 컨설팅 신청하기</p>
+        <form class="newsletter-form" onsubmit="handleSubmit(event)">
+            <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" required>
+            <button type="submit" class="newsletter-button">신청하기</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#about">회사 소개</a>
+            <a href="#service">서비스</a>
+            <a href="#pricing">요금제</a>
+            <a href="#contact">문의하기</a>
+            <a href="#privacy">개인정보처리방침</a>
+        </div>
+        <p>&copy; 2024 Career Growth. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            alert('신청해 주셔서 감사합니다! ' + email + '로 상담 안내를 보내드리겠습니다.');
+            event.target.reset();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: smooth });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+리팩토링 계획 수립하기 - Claude
